@@ -2,37 +2,54 @@
 <html>
 
   <head>
-
+  <link rel='stylesheet' type="text/css" href="style.css">
 
     <script>
-
+    function start() {
+      document.turn = "X";
+      setMessage(document.turn + " gets to start.");
+    }
+    function nextTurn(insideBox) {
+      insideBox.innerText = document.turn;
+      switchTurn();
+    }
+    function switchTurn() {
+      if(document.turn == "O") {
+        document.turn = "X";
+      } else {
+        document.turn = "O";
+      }
+    }
     </script>
 
 
   </head>
   </html>
 
-
+  <body onload="start();">
 
   <div class="title">Tic Tac Toe</div>
 
     <table class="outsideBox", border="1px">
 
       <tr>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
       </tr>
       <tr>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
       </tr>
       <tr>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td class="insideBox" onclick="nextTurn(this);"></td>
       </tr>
+
+
+    </table>
 
 
   </body>
