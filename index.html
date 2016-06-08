@@ -7,19 +7,42 @@
     <script>
     function start() {
       document.turn = "X";
-      setMessage(document.turn + " gets to start.");
+     // setMessage(document.turn + " gets to start.");
     }
     function nextTurn(insideBox) {
       insideBox.innerText = document.turn;
       switchTurn();
     }
     function switchTurn() {
-      if(document.turn == "O") {
+      if(checkForWinner(document.turn)) {
+        console.log('good job, you won.')
+      } else if (document.turn == "O") {
         document.turn = "X";
       } else {
         document.turn = "O";
       }
     }
+
+    function checkForWinner(move) {
+      var result = false;
+      if(rowChecker(1,2,3,move) || rowChecker(4,5,6,move) || rowChecker(7,8,9,move) || rowChecker(1,5,9,move) || rowChecker(3,5,7,move) || rowChecker(1,4,7,move) || rowChecker(2,5,7,move) || rowChecker(3,6,9,move)) {
+        result = true;
+      }
+      return true;
+    }
+
+    function getBox(number) {
+      document.getElementByID("b" + number).innerText;
+    }
+
+    function rowChecker(a,b,c, move) {
+      var result = false;
+      if(getBox(a) == move && getBox(b) == move && getBox(c) == move) {
+        results = true;
+      }
+      return result;
+    }
+
     </script>
 
 
@@ -33,19 +56,19 @@
     <table class="outsideBox", border="1px">
 
       <tr>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b1" class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b2" class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b3" class="insideBox" onclick="nextTurn(this);"></td>
       </tr>
       <tr>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b4" class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b5" class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b6" class="insideBox" onclick="nextTurn(this);"></td>
       </tr>
       <tr>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
-        <td class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b7" class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b8" class="insideBox" onclick="nextTurn(this);"></td>
+        <td id = "b9" class="insideBox" onclick="nextTurn(this);"></td>
       </tr>
 
 
